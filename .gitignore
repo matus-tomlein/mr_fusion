@@ -11,3 +11,14 @@
 *.lai
 *.la
 *.a
+
+bin
+build
+*.pro.user*
+Makefile*
+object_script.*
+*.qm
+ui/include
+*.swp
+documentation/output
+
