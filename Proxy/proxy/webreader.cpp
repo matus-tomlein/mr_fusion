@@ -6,6 +6,8 @@
 #include "session.h"
 #include "requestreader.h"
 #include "webdownloadsmanager.h"
+#include "cachefolder.h"
+#include "proxyrequest.h"
 
 #include <QUrl>
 
@@ -27,6 +29,20 @@ void WebReader::read()
     m_readMutex.lock();
     m_stream = WebDownloadsManager::instance()->getStream(m_request, this, m_session, &done);
     m_readMutex.unlock();
+
+    if (m_stream) {
+        QByteArray firstLine = m_stream->readLine().trimmed();
+
+        if (!firstLine.isEmpty()) {
+            m_socketHandler->write(m_stream->readAll());
+            m_stream->deleteLater();
+            QFile *file = CacheFolder().fileByPath(firstLine);
+            if (file->open(QFile::ReadOnly))
+                m_stream = file;
+            else
+                m_stream = NULL;
+        }
+    }
 
     if (!m_stream)
         failed();

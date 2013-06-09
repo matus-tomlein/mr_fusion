@@ -50,5 +50,10 @@ QFile *CacheFolder::cacheFile(ProxyRequest *request, int part, QObject *parent) 
 QFile *CacheFolder::cacheFile(uint id, int part, QObject *parent) const
 {
     return new QFile(absoluteFilePath(QString("%1.cache")
-                            .arg(id)));
+                                      .arg(id)));
+}
+
+QFile *CacheFolder::fileByPath(const QString &pathToFile) const
+{
+    return new QFile(absoluteFilePath(pathToFile));
 }

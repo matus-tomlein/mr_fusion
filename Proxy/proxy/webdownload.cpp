@@ -82,6 +82,8 @@ WebSocket *WebDownload::createWebSocket()
     if (writeFile->exists())
         writeFile->remove();
     writeFile->open(QIODevice::WriteOnly);
+    writeFile->write("\n");
+    writeFile->flush();
 
     WebSocket *socket = new WebSocket(m_request, this, new WebSocketOutput(writeFile));
 

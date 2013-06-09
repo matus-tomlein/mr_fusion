@@ -19,6 +19,8 @@ public:
     QFile *cacheFile(const QString &url, int part, QObject *parent = NULL) const;
     QFile *cacheFile(ProxyRequest *request, int part, QObject *parent = NULL) const;
     QFile *cacheFile(uint id, int part, QObject *parent = NULL) const;
+
+    QFile *fileByPath(const QString &pathToFile) const;
 };
 
 #endif // CACHEFOLDER_H
