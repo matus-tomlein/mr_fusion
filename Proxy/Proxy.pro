@@ -26,6 +26,7 @@ include(init/init.pri)
 include(jobs/jobs.pri)
 include(proxy/proxy.pri)
 
+macx:QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.7
 macx:QMAKE_CXXFLAGS += -stdlib=libc++
 QMAKE_CXXFLAGS += -std=c++0x
 

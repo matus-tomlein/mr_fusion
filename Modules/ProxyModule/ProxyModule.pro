@@ -16,5 +16,6 @@ TARGET          = $$qtLibraryTarget(ownet_proxymodule)
 macx:DESTDIR    = ../../Proxy/MrFusionProxy.app/Contents/MacOS/modules
 !macx:DESTDIR   = ../../Proxy/modules
 
+macx:QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.7
 macx:QMAKE_CXXFLAGS += -stdlib=libc++
 QMAKE_CXXFLAGS += -std=c++0x
